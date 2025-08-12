@@ -1,114 +1,101 @@
-/* Contenedor principal */
+:root {
+  --max-width: 1200px;
+  --spacing: 1.5rem;
+  --navbar-height: 4rem;
+  --radius: 0.75rem;
+  --transition-speed: 0.3s;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --color-primary: #4a90e2;
+  --color-light: #fff;
+  --color-dark: #333;
+}
+
 .home-page {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: var(--max-width);
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: var(--spacing);
-  padding: var(--spacing);
-  /* mueve todo el contenido debajo del navbar */
-  padding-top: calc(var(--spacing) + var(--navbar-height));
+  padding-block: var(--spacing);
+  padding-inline: var(--spacing);
+  padding-block-start: calc(var(--spacing) + var(--navbar-height));
 }
 
-/* Hero Section */
 .home-hero {
   position: relative;
   background: url('../assets/fondo.jpg') center/cover no-repeat;
-  /* resta la altura del navbar para no solapar */
   min-height: calc(80vh - var(--navbar-height));
-  padding: 6rem 2rem;
-  border-radius: var(--border-radius);
+  padding-block: 6rem;
+  padding-inline: 2rem;
+  border-radius: var(--radius);
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--color-light);
-  z-index: 1; /* por encima del overlay */
+  z-index: 1;
 }
 
-/* Overlay semitransparente */
 .home-hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.4);
   z-index: 0;
 }
 
-/* Todos los hijos del héroe por encima del overlay */
 .home-hero > * {
   position: relative;
   z-index: 1;
 }
 
-.home-hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
-  color: white;
-}
-
+.home-hero h1,
 .home-hero p {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  margin-bottom: 2rem;
-  color: white;
+  margin: 0 0 1rem;
 }
 
-/* Botón primario */
 .btn-primary {
   position: relative;
   background-color: var(--color-primary);
   color: var(--color-light);
   padding: 0.75rem 2rem;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: transform var(--transition-speed), filter var(--transition-speed);
+  transition: transform var(--transition-speed) var(--transition-ease),
+              filter var(--transition-speed) var(--transition-ease);
 }
 
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus-visible {
   transform: translateY(-3px);
   filter: brightness(0.9);
-  outline: 2px solid var(--color-light);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-light);
+  outline-offset: 3px;
 }
 
-/* Features Section con perspectiva para tilt */
 .home-features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: calc(var(--spacing) / 2);
+  gap: calc(var(--spacing)/2);
   perspective: 1000px;
 }
 
-/* Tarjeta de característica */
 .feature-card {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255,255,255,0.6);
   backdrop-filter: blur(8px);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
   padding: 2rem 1.5rem;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform var(--transition-speed) var(--transition-ease),
+              box-shadow var(--transition-speed) var(--transition-ease);
   will-change: transform;
-  transform-style: preserve-3d;
 }
 
 .feature-card:hover {
-  /* tilt + elevación */
-  transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: rotateX(3deg) rotateY(-3deg) translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
-.feature-card h2 {
-  margin-bottom: 0.5rem;
-  color: var(--color-primary);
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-}
-
-.feature-card p {
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  color: var(--color-dark);
-}

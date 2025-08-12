@@ -5,30 +5,32 @@ import "../styles/Contact.css";
 function Contact() {
   return (
     <div className="contact-page">
-      <h1>Contáctanos</h1>
+      <div className="contact-card">
+        <h1 className="contact-title">Contáctanos</h1>
+        <form className="contact-form" noValidate>
+          <div className="field">
+            <label htmlFor="name">Nombre</label>
+            <input id="name" type="text" name="name" placeholder="Tu nombre" />
+          </div>
 
-      <form className="contact-form">
-        <label>
-          Nombre
-          <input type="text" name="name" placeholder="Tu nombre" />
-        </label>
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="tu@ejemplo.com" />
+          </div>
 
-        <label>
-          Email
-          <input type="email" name="email" placeholder="tu@ejemplo.com" />
-        </label>
+          <div className="field">
+            <label htmlFor="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="Escribe tu mensaje" rows="4" />
+          </div>
 
-        <label>
-          Mensaje
-          <textarea name="message" placeholder="Escribe tu mensaje" />
-        </label>
-
-        <button type="submit" className="btn-primary">
-          Enviar
-        </button>
-      </form>
+          <button type="submit" className="btn-primary">
+            Enviar
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
 export default Contact;
+

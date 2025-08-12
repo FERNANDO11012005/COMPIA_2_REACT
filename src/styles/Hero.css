@@ -1,19 +1,30 @@
-/* src/styles/Hero.css */
+/* Variables globales */
+:root {
+  --hero-height: 90vh;
+  --overlay-color: rgba(0, 0, 0, 0.4);
+  --btn-padding: 0.75rem 1.5rem;
+  --transition-speed: 0.2s;
+  --transition-ease: ease;
+}
+
+/* Hero principal */
 .hero {
   position: relative;
   background: url('../assets/hero.webp') center/cover no-repeat;
-  height: 90vh;
+  height: var(--hero-height);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Capa semitransparente */
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--overlay-color);
 }
 
+/* Contenido encima del overlay */
 .hero__content {
   position: relative;
   color: #fff;
@@ -21,18 +32,28 @@
   z-index: 1;
 }
 
+/* Botón hero */
 .btn--hero {
   margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
+  padding: var(--btn-padding);
   background-color: var(--color-primary);
   border: none;
   border-radius: var(--border-radius);
   color: var(--color-dark);
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: 
+    transform var(--transition-speed) var(--transition-ease),
+    background-color var(--transition-speed) var(--transition-ease);
 }
 
 .btn--hero:hover {
   transform: translateY(-3px);
   background-color: #e0b895;
 }
+
+/* Enfoque accesible */
+.btn--hero:focus-visible {
+  outline: 3px solid var(--color-light);
+  outline-offset: 2px;
+}
+
