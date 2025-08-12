@@ -1,18 +1,94 @@
-/* src/styles/AdminLayout.module.css */
-
 .admin-layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f3e9dc, #d2b48c);
+  color: #3e2f1c;
 }
 
-.admin-layout__sidebar {
-  width: 240px;
-  background: #1f2937;
-  color: white;
+/* Sidebar café con glassmorphism */
+.sidebar {
+  width: 260px;
+  background: rgba(94, 64, 38, 0.25);
+  backdrop-filter: blur(14px);
+  border-right: 1px solid rgba(94, 64, 38, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
 }
 
-.admin-layout__content {
+.sidebar.collapsed {
+  width: 80px;
+  align-items: center;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #3e2f1c;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #3e2f1c;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #3e2f1c;
+  font-weight: 500;
+  padding: 12px 18px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(94, 64, 38, 0.15);
+  transform: translateX(4px);
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+/* Contenido principal con glassmorphism */
+.admin-content {
   flex: 1;
-  padding: 2rem;
-  background: #f9fafb;
+  padding: 40px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  margin: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensaje de bienvenida */
+.admin-welcome {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: #3e2f1c;
+}
+
+.admin-welcome h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
